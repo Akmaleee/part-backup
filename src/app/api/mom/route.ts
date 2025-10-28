@@ -40,7 +40,7 @@ export async function POST(req: Request) {
         date: new Date(tanggalMom),
         time: waktu,
         venue,
-        count_attendees: Number(peserta) || null,
+        count_attendees: (peserta) || null,
         content,
         progress_id: progressRecord ? progressRecord.id : null,
         approvers: approvers?.length

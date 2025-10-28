@@ -36,7 +36,7 @@ model Mom {
   date            DateTime     @default(now())
   time            String?
   venue           String?
-  count_attendees Int?
+  count_attendees String?
   content         Json?        // simpan struktur rich text / array section TipTap
 
   approvers       Approver[]
