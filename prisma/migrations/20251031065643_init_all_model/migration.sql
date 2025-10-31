@@ -43,6 +43,8 @@ CREATE TABLE "public"."Approver" (
     "id" SERIAL NOT NULL,
     "mom_id" INTEGER NOT NULL,
     "name" TEXT,
+    "type" TEXT,
+    "email" TEXT,
 
     CONSTRAINT "Approver_pkey" PRIMARY KEY ("id")
 );
