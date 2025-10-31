@@ -53,6 +53,8 @@ model Approver {
   id      Int   @id @default(autoincrement())
   mom_id  Int
   name    String?
+  type    String?
+  email   String?
 
   mom     Mom   @relation(fields: [mom_id], references: [id])
 }
