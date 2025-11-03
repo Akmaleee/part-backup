@@ -145,7 +145,7 @@ async function nodeToDocx(node: TiptapNode, options: { isHeader?: boolean } = {}
                 const imgBuffer = await fetchImage(node.attrs.src);
                 if (imgBuffer) {
                     return new Paragraph({
-                        children: [new ImageRun({ data: imgBuffer.toString("base64"), transformation: { width: 450, height: 300 } } as any)],
+                        children: [new ImageRun({ data: imgBuffer.toString("base64"), transformation: { width: 450, height: 300 },type: "jpg", } as any)],
                         alignment: getAlignment(node.attrs?.align),
                     });
                 }
@@ -262,7 +262,8 @@ async function parseAttachments(attachments: any[]): Promise<Table[]> {
                         attachmentContent.push(new Paragraph({
                             children: [new ImageRun({
                                 data: imgBuffer.toString("base64"),
-                                transformation: { width: 450, height: 300 }
+                                transformation: { width: 450, height: 300 },
+                                type: "jpg",
                             } as any)],
                             alignment: AlignmentType.CENTER,
                             spacing: { after: 100 }
@@ -447,9 +448,9 @@ export async function POST(req: Request) {
         rows: [
             new TableRow({
                 children: [
-                    new TableCell({ verticalAlign: VerticalAlign.CENTER, children: defaultLogoBuffer ? [new Paragraph({ alignment: AlignmentType.CENTER, children: [new ImageRun({ data: defaultLogoBuffer.toString("base64"), transformation: { width: 120, height: 60 } } as any)] })] : [new Paragraph({ text: "Logo T-Sat", alignment: AlignmentType.CENTER })], width: { size: 25, type: WidthType.PERCENTAGE }, verticalMerge: "restart", borders: { top: thinBlackBorder, left: thinBlackBorder, right: thinBlackBorder, bottom: noBorder }, margins: cellMargins }),
+                    new TableCell({ verticalAlign: VerticalAlign.CENTER, children: defaultLogoBuffer ? [new Paragraph({ alignment: AlignmentType.CENTER, children: [new ImageRun({ data: defaultLogoBuffer.toString("base64"), transformation: { width: 120, height: 60 },type: "jpg", } as any)] })] : [new Paragraph({ text: "Logo T-Sat", alignment: AlignmentType.CENTER })], width: { size: 25, type: WidthType.PERCENTAGE }, verticalMerge: "restart", borders: { top: thinBlackBorder, left: thinBlackBorder, right: thinBlackBorder, bottom: noBorder }, margins: cellMargins }),
                     new TableCell({ children: [ new Paragraph({ text: "MINUTE OF MEETING", heading: HeadingLevel.HEADING_5, alignment: AlignmentType.CENTER }), new Paragraph({ text: `Joint Planning Session Telkomsat & ${momData.company?.name || ''}`, alignment: AlignmentType.CENTER }), ], width: { size: 50, type: WidthType.PERCENTAGE }, borders: { top: thinBlackBorder, left: thinBlackBorder, right: thinBlackBorder, bottom: thinBlackBorder }, margins: cellMargins }),
-                    new TableCell({ verticalAlign: VerticalAlign.CENTER, children: companyLogoApiBuffer ? [new Paragraph({ alignment: AlignmentType.CENTER, children: [new ImageRun({ data: companyLogoApiBuffer.toString("base64"), transformation: { width: 120, height: 60 } } as any)] })] : [new Paragraph({ text: "Logo Mitra", alignment: AlignmentType.CENTER })], width: { size: 25, type: WidthType.PERCENTAGE }, verticalMerge: "restart", borders: { top: thinBlackBorder, left: thinBlackBorder, right: thinBlackBorder, bottom: noBorder }, margins: cellMargins }),
+                    new TableCell({ verticalAlign: VerticalAlign.CENTER, children: companyLogoApiBuffer ? [new Paragraph({ alignment: AlignmentType.CENTER, children: [new ImageRun({ data: companyLogoApiBuffer.toString("base64"), transformation: { width: 120, height: 60 }, type: "jpg", } as any)] })] : [new Paragraph({ text: "Logo Mitra", alignment: AlignmentType.CENTER })], width: { size: 25, type: WidthType.PERCENTAGE }, verticalMerge: "restart", borders: { top: thinBlackBorder, left: thinBlackBorder, right: thinBlackBorder, bottom: noBorder }, margins: cellMargins }),
                 ],
             }),
             new TableRow({
