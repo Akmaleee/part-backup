@@ -42,9 +42,11 @@ CREATE TABLE "public"."Mom" (
 CREATE TABLE "public"."Approver" (
     "id" SERIAL NOT NULL,
     "mom_id" INTEGER NOT NULL,
-    "name" TEXT,
-    "type" TEXT,
-    "email" TEXT,
+    "name" TEXT NOT NULL,
+    "type" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Approver_pkey" PRIMARY KEY ("id")
 );
